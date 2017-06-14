@@ -102,7 +102,6 @@ def handle_eda(samples):
 
     if(eda_ignore_values > 0):
         eda_ignore_values -= 1
-        print("building ref value {}".format(eda_reference));
         eda_reference = (eda_reference + eda_value) / 2
     else:
         eda_reference = 0.9 * eda_reference + 0.1 * eda_value
@@ -110,9 +109,12 @@ def handle_eda(samples):
     return eda_value - eda_reference
 
 def send_osc(client, path, args):
+  try:
     msg = OSCMessage("/{}".format(path))
     msg.append(args)
     client.send(msg)
+  except:
+    print("Couldnt send OSC message, server not running?")
 
 try:
     while True:
@@ -134,7 +136,7 @@ try:
         variation = handle_eda(eda_samples)
 
         if(abs(variation) > eda_variation_threshold):
-            print(" * EDA change, amplitude: {}".format(variation))
+            print(" * EDA change, variation: {}".format(variation))
             send_osc(client, "eda", variation)
 
         # send_osc(client, "eda", eda_samples)
