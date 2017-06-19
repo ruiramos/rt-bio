@@ -1,14 +1,3 @@
-#! /usr/bin/env python
-
-# Use pyaudio to open the microphone and run aubio.pitch on the stream of
-# incoming samples. If a filename is given as the first argument, it will
-# record 5 seconds of audio to this location. Otherwise, the script will
-# run until Ctrl+C is pressed.
-
-# Examples:
-#    $ ./python/demos/demo_pyaudio.py
-#    $ ./python/demos/demo_pyaudio.py /tmp/recording.wav
-
 import pyaudio
 import sys
 import numpy as np
