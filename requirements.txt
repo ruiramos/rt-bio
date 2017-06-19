@@ -2,4 +2,4 @@ pyserial
 pyosc
 bitalino
 pyaudio
-youtube_dl
+aubio
