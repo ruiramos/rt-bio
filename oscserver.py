@@ -23,7 +23,7 @@ def eda_callback(path, tags, args, source):
   print ("EDA data:", args)
 
 def beat_callback(path, tags, args, source):
-  print ("* Beat! Heart rate::", args[0])
+  print ("* Beat! Heart rate::", args)
 
 server.addMsgHandler( "/beat", beat_callback )
 server.addMsgHandler( "/ecg", ecg_callback )
